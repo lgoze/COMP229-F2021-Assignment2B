@@ -45,8 +45,10 @@ db.once('open', function(){
     console.log("connected to MongoDB at localhost:27017")
 });
 
+
 //Instantiate Express
 const app = express();
+export default app;
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -59,21 +61,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-//connect-flash initialization
-app.use(flash());
-
-//express session initialization
-app.use(session(StoreOptions));
-
-//passport initialization
-app.use(passport.initialize());
-app.use(passport.session());
-
 //Router Middleware
 app.use('/', indexRouter);
-//works only if logged in true
-app.use('/contact', isLoggedIn, contactRouter);
-app.use('/auth', userRouter);
+app.use('/contact', contactRouter);
 
 
 // catch 404 and forward to error handler
@@ -93,4 +83,3 @@ app.use(function(err:createError.HttpError, req:express.Request, res:express.Res
 });
 
 //module.exports = app;
-export default app;

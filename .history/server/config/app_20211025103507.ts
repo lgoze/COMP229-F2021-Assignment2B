@@ -45,8 +45,10 @@ db.once('open', function(){
     console.log("connected to MongoDB at localhost:27017")
 });
 
+
 //Instantiate Express
 const app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -71,8 +73,7 @@ app.use(passport.session());
 
 //Router Middleware
 app.use('/', indexRouter);
-//works only if logged in true
-app.use('/contact', isLoggedIn, contactRouter);
+app.use('/contact', contactRouter);
 app.use('/auth', userRouter);
 
 
