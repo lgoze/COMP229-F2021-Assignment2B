@@ -1,5 +1,3 @@
-//index refers to everything public
-//create different items in controller for private data
 import express from 'express';
 
 import ContactModel from '../models/contact';
@@ -16,7 +14,7 @@ export function DisplayListPage(req: express.Request, res: express.Response, nex
 
         // console.log(contactCollection);
         //if user exists will be added to 'UserDisplayName' variable
-        res.render('index', { title: 'Contact list', page: 'contact/contact-list', contact: contactCollection, displayName: UserDisplayName(req) })
+        res.render('index', { title: 'Contact list', content: 'contact/contact-list', contact: contactCollection, displayName: UserDisplayName(req) })
 
     })
 }
@@ -32,14 +30,14 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
         };
 
         console.log(contactItemToEdit);
-        res.render('index', { title: "Contact Edit", page: "contact/contact-edit", item: contactItemToEdit, displayName: UserDisplayName(req) })
+        res.render('index', { title: "Contact Edit", content: "contact/contact-edit", item: contactItemToEdit, displayName: UserDisplayName(req) })
     })
 }
 
 // Display (C)reate page
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     // show the edit view
-    res.render('index', { title: 'Add Contact', page: 'contact/contact-edit', item: '', displayName: UserDisplayName(req) });
+    res.render('index', { title: 'Add Contact', content: 'contact/contact-edit', item: '', displayName: UserDisplayName(req) });
 }
 
 // Process (E)dit page

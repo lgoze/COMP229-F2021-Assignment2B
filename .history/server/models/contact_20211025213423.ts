@@ -8,10 +8,9 @@ const ContactSchema = new Schema({
     contactNumber: String,
     emailAddress: String
 }, {
-    collection: "contacts"
+    collection: "contact"
 });
 
-//attaching model name "Contact" to schema
 const Model = mongoose.model("Contact", ContactSchema);
 
 export default Model;

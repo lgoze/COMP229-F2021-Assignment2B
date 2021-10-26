@@ -1,5 +1,3 @@
-//index refers to everything public
-//create different items in controller for private data
 import express from 'express';
 
 import ContactModel from '../models/contact';
@@ -39,7 +37,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
 // Display (C)reate page
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     // show the edit view
-    res.render('index', { title: 'Add Contact', page: 'contact/contact-edit', item: '', displayName: UserDisplayName(req) });
+    res.render('index', { title: 'Add Contact', content: 'contact/contact-edit', item: '', displayName: UserDisplayName(req) });
 }
 
 // Process (E)dit page

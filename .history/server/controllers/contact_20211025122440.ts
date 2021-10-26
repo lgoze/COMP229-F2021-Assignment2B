@@ -1,5 +1,3 @@
-//index refers to everything public
-//create different items in controller for private data
 import express from 'express';
 
 import ContactModel from '../models/contact';
