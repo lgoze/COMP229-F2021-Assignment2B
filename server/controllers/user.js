@@ -18,7 +18,7 @@ const Utils_1 = require("../views/Utils");
 function DisplayLoginPage(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.user) {
-            return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: (0, Utils_1.UserDisplayName)(req) });
+            return res.render('index', { title: 'Login', page: '/auth/login', messages: req.flash('loginMessage'), displayName: (0, Utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/contact/list');
     });
@@ -30,7 +30,7 @@ function ProcessLoginPage(req, res, next) {
 exports.ProcessLoginPage = ProcessLoginPage;
 function DisplayRegisterPage(req, res, next) {
     if (!req.user) {
-        return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: (0, Utils_1.UserDisplayName)(req) });
+        return res.render('index', { title: 'Register', page: '/auth/register', messages: req.flash('registerMessage'), displayName: (0, Utils_1.UserDisplayName)(req) });
     }
     return res.redirect('/contact/list');
 }
@@ -41,7 +41,7 @@ function ProcessRegisterPage(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', "User Already Exists"), displayName: (0, Utils_1.UserDisplayName)(req) });
+            return res.render('index', { title: 'Register', page: '/auth/register', messages: req.flash('registerMessage', "User Already Exists"), displayName: (0, Utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/auth/login');
     })(req, res, next);

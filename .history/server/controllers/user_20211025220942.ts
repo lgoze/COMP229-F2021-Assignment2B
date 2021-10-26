@@ -6,7 +6,7 @@ import { UserDisplayName } from '../views/Utils';
 //'flash' library holds request
 export async function DisplayLoginPage(req: Request, res: Response, next: NextFunction) {
     if (!req.user) {
-        return res.render('index', { title: 'Login', page: '/auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) })
+        return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) })
     }
 
     //if user exists it redirects to contact page-- protected page
@@ -21,7 +21,7 @@ export function ProcessLoginPage(req: Request, res: Response, next: NextFunction
 //displays register page if user does not exist
 export function DisplayRegisterPage(req: Request, res: Response, next: NextFunction) {
     if (!req.user) {
-        return res.render('index', { title: 'Register', page: '/auth/register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) });
+        return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) });
     }
     return res.redirect('/contact/list');
 }
@@ -35,7 +35,7 @@ export function ProcessRegisterPage(req: Request, res: Response, next: NextFunct
         }
 
         if (!user) {
-            return res.render('index', { title: 'Register', page: '/auth/register', messages: req.flash('registerMessage', "User Already Exists"), displayName: UserDisplayName(req) })
+            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', "User Already Exists"), displayName: UserDisplayName(req) })
         }
 
         //user exists
